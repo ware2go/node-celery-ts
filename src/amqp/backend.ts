@@ -296,6 +296,10 @@ export class RpcBackend implements ResultBackend {
 
         this.promises.resolve(id, message);
     }
+
+    public async getTaskState<T>(): Promise<ResultMessage<T>> {
+        throw new Error("cannot get task state from AMQP backend");
+    }
 }
 
 /**

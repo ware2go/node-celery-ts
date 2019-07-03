@@ -49,6 +49,7 @@ export interface ResultBackend {
      * @returns A Promise that resolves to the result fetched from the backend.
      */
     get<T>({ taskId, timeout }: GetOptions): Promise<ResultMessage<T>>;
+    getTaskState<T>(taskId: string): Promise<ResultMessage<T>>;
 
     /**
      * @param taskId The UUID of the task whose result is to be deleted from
