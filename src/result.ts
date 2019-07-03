@@ -37,7 +37,7 @@ import { createTimeoutPromise } from "./utility";
  */
 export class Result<T> {
     private readonly backend: ResultBackend;
-    private readonly taskId: string;
+    public readonly taskId: string;
     private readonly result: Promise<T>;
 
     /**
