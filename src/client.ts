@@ -40,7 +40,7 @@ import { Task } from "./task";
  * result backends.
  */
 export class Client {
-    private readonly backend: ResultBackend;
+    public readonly backend: ResultBackend;
     private readonly brokers: Array<MessageBroker>;
     private readonly id: string;
     private readonly taskDefaults: TaskDefaults;
