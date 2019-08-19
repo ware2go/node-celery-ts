@@ -1,6 +1,6 @@
 {
-    "name": "celery-ts",
-    "version": "1.0.0",
+    "name": "@w2g/celery-ts",
+    "version": "1.2.0",
     "description": "TypeScript Celery client for Node",
     "keywords": [
         "amqp",
@@ -58,20 +58,19 @@
         "typescript": "^3.0.1"
     },
     "engines": {
-        "node": "^8.11.3"
+        "node": ">=8.11.3"
     },
     "dependencies": {
         "amqplib": "^0.5.2",
         "ioredis": "^4.0.0",
-        "js-yaml": "^3.12.0",
+        "js-yaml": "^3.13.1",
         "underscore": "^1.9.1",
         "urijs": "^1.19.1",
         "uuid": "^3.3.2"
     },
     "scripts": {
-        "build": "./node_modules/typescript/bin/tsc",
+        "prepare": "./node_modules/typescript/bin/tsc",
         "lint": "./node_modules/tslint/bin/tslint --project ./",
-        "setup": "npm install",
         "test": "nyc mocha",
         "test-integration": "nyc mocha --opts ./vagrant/mocha.opts",
         "typedoc": "./node_modules/typedoc/bin/typedoc ./src/"

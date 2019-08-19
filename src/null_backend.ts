@@ -82,4 +82,8 @@ export class NullBackend implements ResultBackend {
     public uri(): never {
         throw new Error("cannot query the URI of a null backend");
     }
+
+    public async getTaskState<T>(): Promise<ResultMessage<T>> {
+        throw new Error("cannot get task state from null backend");
+    }
 }

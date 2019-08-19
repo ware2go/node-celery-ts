@@ -11,8 +11,7 @@ before_install:
   - docker-compose up -d
   - cd ../
 before_script:
-  - npm run setup
-  - npm run build
+  - npm install
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
@@ -27,17 +26,10 @@ before_deploy:
   - npm pack
   - npm run typedoc
 deploy:
-  - provider: npm
-    skip-cleanup: true
-    email: $NPM_EMAIL
-    api_key: $NPM_API_KEY
-    on:
-      branch: master
-      tags: true
   - provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true
     on:
-      branch: develop
+      branch: master
     local-dir: docs

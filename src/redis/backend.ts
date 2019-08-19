@@ -110,6 +110,14 @@ export class RedisBackend implements ResultBackend {
         );
     }
 
+    public async getTaskState<T>(taskId: string): Promise<ResultMessage<T>> {
+        const redisKey = taskId;
+        return this.pool.use (async (client) =>
+            client.get(redisKey)
+                .then((value) => JSON.parse(value))
+        );
+    }
+
     /**
      * Uses two connections to SUBSCRIBE to the correct key ID, then try GET.
      * If GET returns a successful result,
