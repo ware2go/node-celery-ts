@@ -42,6 +42,7 @@ export interface ResultMessage<T> {
     task_id: string;
     /** The traceback of this result, if any. */
     traceback: string | null;
+    date_done: Date;
 }
 
 /**
