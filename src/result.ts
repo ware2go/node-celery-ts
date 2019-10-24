@@ -38,7 +38,6 @@ import { createTimeoutPromise } from "./utility";
 export class Result<T> {
     private readonly backend: ResultBackend;
     public readonly taskId: string;
-    private readonly result: Promise<T>;
 
     /**
      * Will immediately begin waiting for the result to be fetched.
@@ -50,7 +49,6 @@ export class Result<T> {
     public constructor(taskId: string, backend: ResultBackend) {
         this.taskId = taskId;
         this.backend = backend;
-        this.result = this.getResult();
     }
 
     /**
@@ -64,7 +62,9 @@ export class Result<T> {
      *          it is fetched from the backend.
      */
     public async get(timeout?: number): Promise<T> {
-        return createTimeoutPromise(this.result, timeout);
+        const result = this.getResult();
+
+        return createTimeoutPromise(result, timeout);
     }
 
     /**
